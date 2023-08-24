@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 
-export default function TaskCreator(props) {
+export default function TaskCreator({addTask}) {
     const [newTask, setNewTask] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.addTask(newTask);
+        addTask(newTask);
         setNewTask("");
     };
 
