@@ -19,6 +19,8 @@ export default function TaskTable({ tasks }) {
                                 value={task.done ? true : false}
                             />
                         </td>
+                        <button>&#x1F5D1;</button>
+                        <button>&#x270F;</button>
                     </tr>
                 ))}
             </tbody>

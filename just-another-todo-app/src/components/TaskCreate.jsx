@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function TaskCreator({addTask}) {
+export default function TaskCreate({addTask}) {
     const [newTask, setNewTask] = useState("");
 
     const handleSubmit = (event) => {
@@ -23,7 +23,7 @@ export default function TaskCreator({addTask}) {
                     onChange={handleChange}
                     value={newTask}
                 />
-                <button type="submit">Save task</button>
+                <button type="submit">&#128190;</button>
             </form>
         </>
     );

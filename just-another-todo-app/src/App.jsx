@@ -1,32 +1,52 @@
-import { useEffect, useState } from "react";
-import TaskCreator from "./components/TaskCreator";
-import "./App.css";
+import TaskCreate from "./components/TaskCreate";
 import TaskTable from "./components/TaskTable";
 import useLocalStorage from "./hooks/useLocaleStorage";
+import "./App.css";
 
 function App() {
-    /* const [tasks, setTasks] = useState([
-      {id: 0, name: "task1", done: false},
-      {id: 1, name: "task2", done: false},
-      {id: 2, name: "task3", done: false}
-    ]); */
-
     const [tasks, setTasks] = useLocalStorage("JATA-tasks", []);
 
-    const addTask = (taskName) => {
+    const createTask = (taskName, taskDesc) => {
       const newTask = {
         id: tasks.length,
         name: taskName,
-        done: false
+        desc: taskDesc,
+        done: false,
+        edit: false
       };
       setTasks([...tasks, newTask]);
-    }
+    };
+
+    const updateTask = (id, newName, newDesc) => {
+      const temp = [... tasks];
+      const item = temp.find((item) => item.id === id);
+      item.name = newName;
+      item.desc = newDesc;
+      setTasks(temp);
+    };
+
+    const deleteTask = (id) => {
+      const temp = tasks.filter((item) => item.id === id);
+      setTasks(temp);
+    };
+
+    const togleTask = () => {
+      const temp = [... tasks];
+      const item = temp.find((item) => item.id === id);
+      item.done = !item.done;
+      setTasks(temp);
+    };
 
     return (
         <>
           <h1>Just Another ToDo App</h1>
-          <TaskCreator addTask = {addTask}/>
-          <TaskTable tasks={tasks}/>
+          <TaskCreate addTask = {createTask}/>
+          <TaskTable 
+            tasks={tasks} 
+            updateTask={updateTask} 
+            deleteTask={deleteTask} 
+            togleTask={togleTask}
+          />
         </>
     );
 }
