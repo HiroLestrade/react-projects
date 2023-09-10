@@ -2,16 +2,22 @@ import React from "react";
 import { useState } from "react";
 
 export default function TaskCreate({addTask}) {
-    const [newTask, setNewTask] = useState("");
+    const [newTaskName, setNewTaskName] = useState("");
+    const [newTaskDesc, setNewTaskDesc] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addTask(newTask);
-        setNewTask("");
+        createTask(newTaskName, newTaskDesc);
+        setNewTaskName("");
+        setNewTaskDesc("");
     };
 
-    const handleChange = (event) => {
-        setNewTask(event.target.value);
+    const handleChangeName = (event) => {
+        setNewTaskName(event.target.value);
+    };
+
+    const handleChangeDesc = (event) => {
+        setNewTaskDesc(event.target.value);
     };
 
     return (
@@ -20,8 +26,14 @@ export default function TaskCreate({addTask}) {
                 <input
                     type="text"
                     placeholder="New task"
-                    onChange={handleChange}
-                    value={newTask}
+                    onChange={handleChangeName}
+                    value={newTaskName}
+                />
+                <input
+                    type="text"
+                    placeholder="Description"
+                    onChange={handleChangeDesc}
+                    value={newTaskDesc}
                 />
                 <button type="submit">&#128190;</button>
             </form>
