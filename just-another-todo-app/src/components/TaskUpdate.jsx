@@ -13,6 +13,12 @@ export default function TaskUpdate({ task, updateTask, setEdit }) {
         setEdit(false);
     };
 
+    const handleCancel = () => {
+        setNewTaskName("");
+        setNewTaskDesc("");
+        setEdit(false);
+    }
+
     const handleChangeName = (event) => {
         setNewTaskName(event.target.value);
     };
@@ -38,9 +44,10 @@ export default function TaskUpdate({ task, updateTask, setEdit }) {
                         onChange={handleChangeDesc}
                         value={newTaskDesc}
                     />
-                    <button type="submit">done</button>
+                    <button type="submit">&#x2705;</button>
+                    <button onClick={handleCancel}>&#x274C;</button>
                 </form>
-                
+
             </td>
         </tr>
     );

@@ -21,10 +21,10 @@ export default function TaskData({ task, deleteTask, togleTask, setEdit}) {
             <td>{task.name}</td>
             <td>{task.desc}</td>
             <td>
-                <button onClick={handleClickEdit}>Edit</button>
+                <button onClick={handleClickEdit}>&#x270F;</button>
             </td>
             <td>
-                <button onClick={handleClickDelete}>Delete</button>
+                <button onClick={handleClickDelete}>&#x1F5D1;</button>
             </td>
             <td>
                 <input type="checkbox" onChange={habndleCheckbox} checked={task.done}/>
