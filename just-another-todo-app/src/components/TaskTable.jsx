@@ -1,27 +1,22 @@
 import React from "react";
+import TaskRow from "./TaskRow";
 
-export default function TaskTable({ tasks }) {
+export default function TaskTable({ tasks, updateTask, deleteTask, togleTask }) {
+    
     return (
         <table>
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Task</th>
+                    <th>Description</th>
                     <th>Done</th>
                 </tr>
             </thead>
+
             <tbody>
                 {tasks.map((task) => (
-                    <tr key={task.id}>
-                        <td>{task.name}</td>
-                        <td>
-                            <input
-                                type="checkbox"
-                                value={task.done ? true : false}
-                            />
-                        </td>
-                        <button>&#x1F5D1;</button>
-                        <button>&#x270F;</button>
-                    </tr>
+                    <TaskRow task={task} updateTask={updateTask} deleteTask={deleteTask} togleTask={togleTask} />
                 ))}
             </tbody>
         </table>
