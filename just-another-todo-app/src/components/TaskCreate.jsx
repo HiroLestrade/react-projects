@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function TaskCreate({addTask}) {
+export default function TaskCreate({createTask}) {
     const [newTaskName, setNewTaskName] = useState("");
     const [newTaskDesc, setNewTaskDesc] = useState("");
 

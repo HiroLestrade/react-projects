@@ -10,6 +10,7 @@ export default function TaskTable({ tasks, updateTask, deleteTask, togleTask }) 
                     <th>Id</th>
                     <th>Task</th>
                     <th>Description</th>
+                    <th colSpan={2}></th>
                     <th>Done</th>
                 </tr>
             </thead>

@@ -11,8 +11,7 @@ function App() {
         id: tasks.length,
         name: taskName,
         desc: taskDesc,
-        done: false,
-        edit: false
+        done: false
       };
       setTasks([...tasks, newTask]);
     };
@@ -22,15 +21,16 @@ function App() {
       const item = temp.find((item) => item.id === id);
       item.name = newName;
       item.desc = newDesc;
+      item.edit = false;
       setTasks(temp);
     };
 
     const deleteTask = (id) => {
-      const temp = tasks.filter((item) => item.id === id);
+      const temp = tasks.filter((item) => item.id !== id);
       setTasks(temp);
     };
 
-    const togleTask = () => {
+    const togleTask = (id) => {
       const temp = [... tasks];
       const item = temp.find((item) => item.id === id);
       item.done = !item.done;
@@ -40,7 +40,7 @@ function App() {
     return (
         <>
           <h1>Just Another ToDo App</h1>
-          <TaskCreate addTask = {createTask}/>
+          <TaskCreate createTask={createTask}/>
           <TaskTable 
             tasks={tasks} 
             updateTask={updateTask} 
