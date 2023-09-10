@@ -16,7 +16,7 @@ export default function TaskTable({ tasks, updateTask, deleteTask, togleTask }) 
 
             <tbody>
                 {tasks.map((task) => (
-                    <TaskRow task={task} updateTask={updateTask} deleteTask={deleteTask} togleTask={togleTask} />
+                    <TaskRow key={task.id} task={task} updateTask={updateTask} deleteTask={deleteTask} togleTask={togleTask} />
                 ))}
             </tbody>
         </table>
